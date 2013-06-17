@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myExample.QuestionDAO">
+	<!-- 
+	<select id="queryById" parameterType="int" resultType="myExample.domain.Question">
+		SELECT * from T_C_WEB_ANSWER t WHERE t.SID=#{sid}
+	</select>
+	 -->
+	 <resultMap type="myExample.domain.Question" id="QuestionMap">
+	 	<id property="sid" column="sid" />
+	 	<result property="createdate" column="createdate" javaType="String" jdbcType="DATE"/>
+	 	<result property="status" column="status" javaType="String" jdbcType="NUMERIC" typeHandler="myExample.typeHandler.String_IntTypeHandler"/>
+	 </resultMap>
+	 
+	 <select id="queryById" parameterType="int" resultMap="QuestionMap">
+		SELECT * from T_C_WEB_ANSWER t WHERE t.SID=#{sid}
+	</select>
+	 
+</mapper>  
